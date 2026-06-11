@@ -1,6 +1,6 @@
 // MODELO: Celda
-// Representa una celda del tablero triangular.
-// Cada celda sabe su posición y si tiene una pieza o no.
+// Representa una celda del tablero triangular
+// Cada celda sabe su posición y si tiene una pieza o no
 class Celda {
   final int fila;
   final int col;

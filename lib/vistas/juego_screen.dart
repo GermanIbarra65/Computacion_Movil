@@ -35,14 +35,14 @@ class _JuegoScreenState extends State<JuegoScreen> {
     _servicio.logInicioPartida(widget.nombreJugador);
   }
 
-  // Inicializa el sensor acelerómetro
+  // Inicializa el sensor acelerometro
   void _iniciarSensor() {
     _acelerometroSub = accelerometerEventStream().listen((event) {
       // Calcula la magnitud total del movimiento
       double magnitud = (event.x.abs() + event.y.abs() + event.z.abs());
 
-      // Solo reacciona si pasó al menos 1 segundo desde la última sacudida
-      // para evitar múltiples deshaceres seguidos
+      // Solo reacciona si paso al menos 1 segundo desde la última sacudida
+      // para evitar multiples deshaceres seguidos
       final ahora = DateTime.now();
       if (magnitud > _umbralSacudida &&
           ahora.difference(_ultimaSacudida).inMilliseconds > 1000) {
@@ -74,7 +74,7 @@ class _JuegoScreenState extends State<JuegoScreen> {
   Widget build(BuildContext context) {
     final vm = context.watch<JuegoViewModel>();
 
-    // Detecta cuando el juego termina y muestra el diálogo
+    // Detecta cuando el juego termina y muestra el dialogo
     if (vm.estado == EstadoJuego.terminado && !_gameOverMostrado) {
       _gameOverMostrado = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -87,9 +87,9 @@ class _JuegoScreenState extends State<JuegoScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF1A237E),
         foregroundColor: Colors.white,
-        title: Text('Come Solo - ${widget.nombreJugador}'),
+        title: Text('Come Solo de Ivan-German - ${widget.nombreJugador}'),
         actions: [
-          // Botón de sugerir movimiento
+          // Boton de sugerir movimiento
           IconButton(
             icon: const Icon(Icons.lightbulb_outline),
             tooltip: 'Sugerir movimiento',
@@ -98,7 +98,7 @@ class _JuegoScreenState extends State<JuegoScreen> {
               _servicio.logSugerencia();
             },
           ),
-          // Botón de deshacer
+          // Boton de deshacer
           IconButton(
             icon: const Icon(Icons.undo),
             tooltip: 'Deshacer (o agita el celular)',
@@ -107,7 +107,7 @@ class _JuegoScreenState extends State<JuegoScreen> {
               _servicio.logDeshacer();
             } : null,
           ),
-          // Botón de reiniciar
+          // Boton de reiniciar
           IconButton(
             icon: const Icon(Icons.refresh),
             tooltip: 'Reiniciar',
@@ -120,7 +120,7 @@ class _JuegoScreenState extends State<JuegoScreen> {
       ),
       body: Column(
         children: [
-          // Información del juego
+          // Informacion del juego
           Padding(
             padding: const EdgeInsets.all(12),
             child: Row(
@@ -144,7 +144,7 @@ class _JuegoScreenState extends State<JuegoScreen> {
           const Padding(
             padding: EdgeInsets.all(8),
             child: Text(
-              '📳 Agita el celular para deshacer',
+              'Agita el celular para deshacer',
               style: TextStyle(color: Colors.white54, fontSize: 12),
             ),
           ),
@@ -222,7 +222,7 @@ class _JuegoScreenState extends State<JuegoScreen> {
     );
   }
 
-  // Tarjeta de información (piezas, movimientos)
+  // Tarjeta de informacion (piezas, movimientos)
   Widget _infoCard(String label, String valor) {
     return Column(
       children: [
@@ -235,7 +235,7 @@ class _JuegoScreenState extends State<JuegoScreen> {
     );
   }
 
-  // Diálogo de Game Over
+  // Dialogo de Game Over
   void _mostrarGameOver(JuegoViewModel vm) {
     final piezas = vm.contarPiezas();
     // Guarda la puntuación en Firebase
@@ -254,8 +254,8 @@ class _JuegoScreenState extends State<JuegoScreen> {
             Text('Movimientos: ${vm.contadorMovimientos}'),
             const SizedBox(height: 8),
             Text(
-              piezas == 1 ? '🏆 ¡Perfecto!' :
-              piezas <= 3 ? '⭐ ¡Muy bien!' : '¡Sigue practicando!',
+              piezas == 1 ? ' ¡Perfecto!' :
+              piezas <= 3 ? ' ¡Muy bien!' : '¡Sigue practicando!',
               style: const TextStyle(fontSize: 16),
             ),
           ],

@@ -40,7 +40,7 @@ class PuntuacionesScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final p = puntuaciones[index];
               // Medalla para los primeros tres lugares
-              String medalla = index == 0 ? '🥇' : index == 1 ? '🥈' : index == 2 ? '🥉' : '${index + 1}.';
+              String medalla = index == 0 ? 'OROOOOO' : index == 1 ? 'PLATA' : index == 2 ? 'BRONCE' : '${index + 1}.';
 
               return Card(
                 color: const Color(0xFF283593),

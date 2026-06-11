@@ -30,7 +30,7 @@ class ComeSoloApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Come Solo',
+      title: 'Come SoloIvan-german',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(

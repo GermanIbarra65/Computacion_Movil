@@ -4,8 +4,8 @@ import '../modelo/tablero.dart';
 import '../modelo/juego_state.dart';
 
 // VIEWMODEL: JuegoViewModel
-// Contiene toda la lógica del juego Come Solo.
-// La View solo lee estado y llama funciones, nunca decide lógica.
+// Contiene toda la lógica del juego Come Solo
+// La view solo lee estado y llama funciones, nunca decide logica
 class JuegoViewModel extends ChangeNotifier {
 
   // El tablero del juego
@@ -17,7 +17,7 @@ class JuegoViewModel extends ChangeNotifier {
   // Estado actual del juego
   EstadoJuego estado = EstadoJuego.jugando;
 
-  // Historial de estados para deshacer (patrón Memento)
+  // Historial de estados para deshacer (patron Memento)
   // Cada entrada es una copia del tablero antes de un movimiento
   final List<List<List<Celda?>>> _historial = [];
   final int maxHistorial = 5; // máximo de movimientos a deshacer
@@ -36,13 +36,13 @@ class JuegoViewModel extends ChangeNotifier {
     _tablero.inicializar();
   }
 
-  // RF02: El jugador elige dónde empieza el hueco
+  // el jugador elige donde empieza el hueco
   void inicializarHueco(int f, int c) {
     _tablero.inicializarHueco(f, c);
     notifyListeners(); // avisa a la View que cambiaron los datos
   }
 
-  // RF03: Reinicia el juego completamente
+  // Reinicia el juego completamente
   void reiniciar() {
     _tablero = Tablero();
     celdaSeleccionada = null;
@@ -89,7 +89,7 @@ class JuegoViewModel extends ChangeNotifier {
         _verificarEstado();
         notifyListeners();
       } else {
-        // Movimiento inválido: si tocó otra pieza, la selecciona
+        // Movimiento invalido: si toco otra pieza, la selecciona
         if (celda.ocupada) {
           celdaSeleccionada = celda;
           notifyListeners();
@@ -107,8 +107,8 @@ class JuegoViewModel extends ChangeNotifier {
     }
   }
 
-  // RF04: Deshace el último movimiento
-  // También se activa cuando el usuario agita el celular
+  //  Deshace el ultimo movimiento
+  // Tambien se activa cuando el usuario agita el celular
   bool deshacer() {
     if (_historial.isEmpty) return false;
     _tablero.matriz = _historial.removeLast();
@@ -120,7 +120,7 @@ class JuegoViewModel extends ChangeNotifier {
     return true;
   }
 
-  // RF08: Verifica si quedan movimientos disponibles
+  // Verifica si quedan movimientos disponibles
   void _verificarEstado() {
     if (!hayMovimientos()) {
       estado = EstadoJuego.terminado;
@@ -129,7 +129,7 @@ class JuegoViewModel extends ChangeNotifier {
     }
   }
 
-  // Revisa todas las celdas para ver si alguna tiene movimiento válido
+  // Revisa todas las celdas para ver si alguna tiene movimiento valido
   bool hayMovimientos() {
     List<List<int>> dirs = [
       [2,0],[-2,0],[0,2],[0,-2],[2,2],[-2,-2]

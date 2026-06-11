@@ -1,17 +1,17 @@
 // MODELO: Tablero
-// Contiene la matriz 5x5 del juego Come Solo.
-// El tablero es triangular: fila 0 tiene 1 celda, fila 4 tiene 5 celdas.
+// Contiene la matriz 5x5 del juego Come-Solo
+// El tablero es triangular: fila 0 tiene 1 celda, fila 4 tiene 5 celdas
 import 'celda.dart';
 
 class Tablero {
-  // Matriz 5x5, algunas posiciones son null (fuera del triángulo)
+  // Matriz 5x5, algunas posiciones son null (fuera del tringulo)
   List<List<Celda?>> matriz = List.generate(5, (_) => List.filled(5, null));
 
   Tablero() {
     inicializar();
   }
 
-  // Inicializa el tablero con todas las celdas ocupadas
+  // inicializa el tablero con todas las celdas ocupadas
   // Solo existen celdas donde col <= fila (forma triangular)
   void inicializar() {
     for (int i = 0; i < 5; i++) {
@@ -23,7 +23,7 @@ class Tablero {
     matriz[2][1]!.ocupada = false;
   }
 
-  // RF02: Permite elegir dónde empieza el hueco vacío
+  // Permite elegir donde empieza el hueco vacío
   void inicializarHueco(int f, int c) {
     // Primero ocupa todas las celdas
     for (int i = 0; i < 5; i++) {
@@ -35,12 +35,12 @@ class Tablero {
     matriz[f][c]!.ocupada = false;
   }
 
-  // RF05: Valida si un movimiento es legal
-  // Un movimiento es válido si:
-  // - La celda origen existe y tiene pieza
-  // - La celda destino existe y está vacía
-  // - La celda del medio existe y tiene pieza
-  // - La dirección es válida (salto de 2 posiciones)
+  // valida si un movimiento es legal
+  // un movimiento es valido si:
+  // la celda origen existe y tiene pieza
+  // la celda destino existe y está vacía
+  // la celda del medio existe y tiene pieza
+  // la dirección es válida (salto de 2 posiciones)
   bool validarMovimiento(int f1, int c1, int f2, int c2) {
     if (matriz[f1][c1] == null || matriz[f2][c2] == null) return false;
     if (!matriz[f1][c1]!.ocupada) return false;
@@ -49,7 +49,7 @@ class Tablero {
     int df = f2 - f1;
     int dc = c2 - c1;
 
-    // Direcciones válidas: vertical, horizontal y diagonal
+    // direcciones validas: vertical, horizontal y diagonal
     List<List<int>> dirs = [
       [2, 0], [-2, 0],   // vertical
       [0, 2], [0, -2],   // horizontal

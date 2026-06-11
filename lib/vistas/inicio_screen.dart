@@ -5,7 +5,7 @@ import 'juego_screen.dart';
 
 // VISTA: InicioScreen
 // Pantalla de bienvenida donde el jugador ingresa su nombre
-// y elige dónde empieza el hueco del tablero.
+// y elige donde empieza el hueco del tablero
 class InicioScreen extends StatefulWidget {
   const InicioScreen({super.key});
 
@@ -42,7 +42,7 @@ class _InicioScreenState extends State<InicioScreen> {
               ),
               const SizedBox(height: 8),
               const Text(
-                'Flutter Edition',
+                'Edicion-Prueba001',
                 style: TextStyle(color: Colors.white54, fontSize: 14),
               ),
               const SizedBox(height: 40),
@@ -76,7 +76,7 @@ class _InicioScreenState extends State<InicioScreen> {
               _construirSelectorHueco(),
               const SizedBox(height: 32),
 
-              // Botón jugar
+              // Boton jugar
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -112,7 +112,7 @@ class _InicioScreenState extends State<InicioScreen> {
                 ),
               ),
 
-              // Botón ver puntuaciones
+              // voton ver puntuaciones
               TextButton(
                 onPressed: () => Navigator.pushNamed(context, '/puntuaciones'),
                 child: const Text('Ver puntuaciones',
